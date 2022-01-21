@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+{% block title %}Cancel Ticket{% endblock %}
+
+{% block body %}
+    <div class="w3-display-middle" style="width:80%">
+    <div class="w3-container w3-white w3-padding-16"  style="margin-top:50px; height: 600px; overflow-y: scroll;">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+
+        <div class="alert alert-danger">
+            Are you sure you want to cancel this ticket?
+        </div>
+
+        <table>
+                    <tr>
+                        <th>Passenger</th>
+                        <td>{{ ticket.passenger }}</td>
+                    </tr>
+                    <tr>
+                        <th>Train</th>
+                        <td>{{ ticket.train.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Compartment</th>
+                        <td>{{ ticket.type }}</td>
+                    </tr>
+                    <tr>
+                        <th>From</th>
+                        <td>{{ ticket.source }} at {{ ticket.source_schedule.departure }}</td>
+                    </tr>
+                    <tr>
+                        <th>To</th>
+                        <td>{{ ticket.dest }} at {{ ticket.dest_schedule.arrival }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>{{ ticket.date }}</td>
+                    </tr>
+                </table>
+        <form action="" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Cancel Ticket" class="btn btn-danger" />
+        </form>
+
+      </div>
+    </div>
+  </div>
+    </div>
+    </div>
+{% endblock %}
